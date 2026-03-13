@@ -332,7 +332,8 @@ public final class ChatSession {
                             promptTokenCount: input.text.tokens.size,
                             modelConfiguration: modelConfiguration,
                             tokenizer: tokenizer,
-                            iterator: iterator
+                            iterator: iterator,
+                            tools: tools!
                         )
 
                         for await item in stream {

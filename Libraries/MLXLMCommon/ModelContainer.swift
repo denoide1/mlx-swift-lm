@@ -172,7 +172,8 @@ public final class ModelContainer: Sendable {
     public func generate(
         input: consuming sending LMInput,
         parameters: GenerateParameters,
-        wiredMemoryTicket: WiredMemoryTicket? = nil
+        wiredMemoryTicket: WiredMemoryTicket? = nil,
+        tools: [[String : any Sendable]]
     ) async throws -> AsyncStream<Generation> {
         let input = SendableBox(input)
 
@@ -188,7 +189,8 @@ public final class ModelContainer: Sendable {
                 input: input.consume(),
                 parameters: parameters,
                 context: context,
-                wiredMemoryTicket: wiredMemoryTicket
+                wiredMemoryTicket: wiredMemoryTicket,
+                tools: tools
             )
         }
     }
